@@ -4,6 +4,10 @@ def get_meals():
     return Meal.query.all()
 
 
+def get_meals_cat_id(id):
+    return Meal.query.filter_by(cat_id=(id)).all()
+
+
 def add_meal(meal_name, meal_desc, meal_pict, calories):
     meal = Meal(meal_name=meal_name, meal_desc=meal_desc, meal_pict=meal_pict, calories=calories)
     db.session.add(meal)

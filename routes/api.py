@@ -14,7 +14,8 @@ rf_meal = endpoint.model('meal_rf', {
     'meal_name': fields.String,
     'meal_desc': fields.String,
     'meal_pict': fields.String,
-    'calories': fields.Integer
+    'calories': fields.Integer,
+    'cat_id': fields.Integer
 })
 
 rf_id = endpoint.model('id_rf', {
@@ -25,7 +26,6 @@ rf_id = endpoint.model('id_rf', {
 class Meal(Resource):
 
     def get(self):
-
         meal = db.get_meals()
         return models.MealSchemaConvert().dump(meal, many=True).data, 200
 
@@ -37,7 +37,8 @@ class Meal(Resource):
         saved_meal = db.add_meal(json_object['meal_name'],
                                  json_object['meal_desc'],
                                  json_object['meal_pict'],
-                                 json_object['calories']
+                                 json_object['calories'],
+                                 json_object['cat_id'],
                                  )
 
         if saved_meal:
@@ -47,7 +48,11 @@ class Meal(Resource):
 @endpoint.doc(params={'id': 'Meal id'})
 @endpoint.route('/meals/<id>')
 class Meal_D(Resource):
-    @endpoint.expect(rf_id)
+
+    def get(self, id):
+        meal = db.get_meals_cat_id(id)
+        return models.MealSchemaConvert().dump(meal, many=True).data, 200
+
     def delete(self, id):
 
         meal = db.get_meal_byId(id)

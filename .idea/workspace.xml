@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ce4b8f57-1ba8-4c44-b36e-1dbbd6982c63" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/database/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/database/queries.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +14,7 @@
     <session id="-837679838">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.8" value="1" />
@@ -351,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544181726548</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="morequeries :D">
+      <created>1544203742143</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1544203742143</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -363,7 +367,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32908162" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25326797" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25326797" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

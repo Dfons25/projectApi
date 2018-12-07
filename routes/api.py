@@ -64,5 +64,11 @@ class Meal_D(Resource):
 
         return {'message': 'Invalid operation'}, 404
 
+@endpoint.route('/meals_c/<id>/')
+@endpoint.route('/meals_c/<id>/<cal>')
+class Meal_C(Resource):
 
-
+    @endpoint.doc(params={'id': 'Cat id', 'cal': 'calorie number'})
+    def get(self, id, cal=700):
+        meal = db.get_meals_byCal(id, cal)
+        return models.MealSchemaConvert().dump(meal, many=True).data, 200

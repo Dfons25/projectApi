@@ -13,15 +13,20 @@ endpoint = Namespace('api', description='api related endpoints')
 rf_meal = endpoint.model('meal_rf', {
     'meal_name': fields.String,
     'meal_desc': fields.String,
+    'meal_pict': fields.String,
     'calories': fields.Integer
 })
 
-@endpoint.route('/')
-class RegisterUser(Resource):
+rf_id = endpoint.model('id_rf', {
+    'id': fields.Integer
+})
+
+@endpoint.route('/meals')
+class Meal(Resource):
 
     def get(self):
 
-        meal = db.get_meal()
+        meal = db.get_meals()
         return models.MealSchemaConvert().dump(meal, many=True).data, 200
 
     @endpoint.expect(rf_meal)
@@ -29,14 +34,28 @@ class RegisterUser(Resource):
 
         json_object = endpoint.payload
 
-        meal = models.MealSchemaValidate().load(json_object)
+        saved_meal = db.add_meal(json_object['meal_name'],
+                                 json_object['meal_desc'],
+                                 json_object['meal_pict'],
+                                 json_object['calories']
+                                 )
 
-        if not meal.errors:
-            saved_meal = db.add_meal()
+        if saved_meal:
+            return models.MealSchemaConvert().dump(saved_meal).data, 200
+        return {'message': 'Invalid operation'}, 404
 
-            if saved_meal:
-                return models.MealSchemaConvert().dump(saved_meal).data, 200
-            return {'message': 'Invalid operation'}, 404
+@endpoint.doc(params={'id': 'Meal id'})
+@endpoint.route('/meals/<id>')
+class Meal_D(Resource):
+    @endpoint.expect(rf_id)
+    def delete(self, id):
 
-        return meal.errors, 400
+        meal = db.get_meal_byId(id)
+        if meal:
+            db.remove_meal(id)
+            return {'message': 'Meal removed'}, 201
+
+        return {'message': 'Invalid operation'}, 404
+
+
 

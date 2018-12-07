@@ -1,5 +1,4 @@
 from flask_restplus import Api, Resource
-# from .site import endpoint as website
 from .api import endpoint as api_handler
 
 """

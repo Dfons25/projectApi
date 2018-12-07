@@ -6,7 +6,7 @@ Module responsible for collecting all the namespaces into the same api
 """
 
 api = Api(
-    title='Distributed Computation - Project 4',
+    title='Mobile Computation - Project 1',
     version='1.0',
     description='API structure',
 )

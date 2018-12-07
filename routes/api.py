@@ -45,14 +45,16 @@ class Meal(Resource):
             return models.MealSchemaConvert().dump(saved_meal).data, 200
         return {'message': 'Invalid operation'}, 404
 
-@endpoint.doc(params={'id': 'Meal id'})
+
 @endpoint.route('/meals/<id>')
 class Meal_D(Resource):
 
+    @endpoint.doc(params={'id': 'Cat id'})
     def get(self, id):
         meal = db.get_meals_cat_id(id)
         return models.MealSchemaConvert().dump(meal, many=True).data, 200
 
+    @endpoint.doc(params={'id': 'Meal id'})
     def delete(self, id):
 
         meal = db.get_meal_byId(id)

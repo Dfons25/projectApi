@@ -35,17 +35,15 @@ def return_by_max_cal(id, cal):
             meal_to_add = Meal.query.filter_by(cat_id=int(cat_id)).order_by(Meal.calories.asc()).first()
 
             if not meal_to_add:
-                # return return_meal_list, cal_sum
                 no_meals_left.append(cat_id)
-                #
+
                 if len(set(no_meals_left)) == len(str(id)):
                     return return_meal_list, cal_sum
                 continue
+
             if cal_sum + meal_to_add.calories > int(cal) + int(cal) / 10:
                 return return_meal_list, cal_sum
 
-            # if cat_id not in no_meals_left:
-                # print(no_meals_left)
             for meal in return_meal_list:
                 if meal.cat_id == int(cat_id):
                     return_meal_list.remove(meal)

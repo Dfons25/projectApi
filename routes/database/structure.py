@@ -24,7 +24,8 @@ class Meal(db.Model):
     __tablename__ = 'meal'
     id = db.Column(db.Integer, primary_key=True)
     meal_name = db.Column(db.String(250), nullable=False)
-    meal_desc = db.Column(db.Text, nullable=False)
+    meal_intro = db.Column(db.Text, nullable=False)
+    meal_recp = db.Column(db.Text, nullable=False)
     meal_pict = db.Column(db.String(250), nullable=False)
     calories = db.Column(db.Integer, nullable=False)
     cat_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
